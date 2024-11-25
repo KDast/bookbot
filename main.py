@@ -22,10 +22,25 @@ def get_num_char(text):
  char_count = {}
  char = text.lower()
  words = char.split()
+ count = 0
  # Cannot split a list I need to iterate over each string
- # letters = words.split()
-  
- return len(letters)
+ for word in words:
+  for l in word:
+   if l not in char_count:
+    char_count[l] = count
+   if l in char_count:
+    char_count[l] += 1
+
+ 
+ return char_count
+   #need to individualize count for every letter
+
+
+
+
+
+ 
+ return len(words)
  
 
 
