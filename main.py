@@ -20,16 +20,12 @@ def get_book_text(path):
 
 def get_num_char(text):
  char_count = {}
- char = text.lower()
- words = char.split()
- count = 0
- # Cannot split a list I need to iterate over each string
- for word in words:
-  for l in word:
-   if l not in char_count:
-    char_count[l] = count
-   if l in char_count:
-    char_count[l] += 1
+ words_lowered = text.lower()
+ for letters in words_lowered:
+  if letters in char_count:
+    char_count[letters] += 1
+  else:
+    char_count[letters] = 1
 
  
  return char_count
