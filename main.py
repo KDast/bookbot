@@ -3,8 +3,8 @@ def main():
  text = get_book_text(book_path)
  num_words = get_num_words(text)
  num_letters = get_num_char(text)
- print(f"{num_words} words found in the document")
- print(f"{num_letters} letters found in the document")
+ sorted_report = sort_on(num_letters)
+ print(sorted_report)
  
  
 
@@ -20,28 +20,28 @@ def get_book_text(path):
 
 def get_num_char(text):
  char_count = {}
+ report_list = []
  words_lowered = text.lower()
  for letters in words_lowered:
-  if letters in char_count:
-    char_count[letters] += 1
-  else:
-    char_count[letters] = 1
+  if letters.isalpha():
+   if letters in char_count:
+     char_count[letters] += 1
+   else:
+     char_count[letters] = 1
+ for key in char_count:
+  small_dict = {}
+  value = char_count[key]
+  small_dict[key] = value
+  report_list.append(small_dict)
+ return report_list
+#refine list of dict as letter: a, occurence: 74065213
 
+def sort_on(report):
+ return 
  
- return char_count
-   #need to individualize count for every letter
-
-
-
-
-
- 
- return len(words)
+ report.sort(key=sort_on, reverse=True)
+ return report
  
 
-
- 
- 
- 
 
 main()
