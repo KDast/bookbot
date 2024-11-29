@@ -3,16 +3,19 @@ def main():
  text = get_book_text(book_path)
  num_words = get_num_words(text)
  num_letters = get_num_char(text)
- sorted_report = sort_on(num_letters)
- print(sorted_report)
- 
- 
+ num_letters.sort(key=sort, reverse=True)
+ #print(num_letters, num_words)
+ reports = report(num_letters)
+ print(f"--- Begin report of {book_path} ---") 
+ print(f"{num_words} found") 
+ print(f"{reports} ---End of the report---")
 
+def sort(e):
+ return e["count"]
 def get_num_words(text):
  words = text.split()
 
  return len(words)
-
 
 def get_book_text(path):
  with open(path) as f:
@@ -31,17 +34,15 @@ def get_num_char(text):
  for key in char_count:
   small_dict = {}
   value = char_count[key]
-  small_dict[key] = value
+  small_dict["letter"] = key
+  small_dict["count"] = value
   report_list.append(small_dict)
  return report_list
-#refine list of dict as letter: a, occurence: 74065213
-
-def sort_on(report):
- return 
  
- report.sort(key=sort_on, reverse=True)
- return report
- 
-
+def report(list_dict):
+ s = ""
+ for i in list_dict:
+  s += (f"The {i['letter']} character was found {i['count']} times ")
+ return s
 
 main()
